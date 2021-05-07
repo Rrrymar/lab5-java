@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="153a9f18-9624-4dd6-8c0a-366d0ed1bd4f" name="Default Changelist" comment="commit 1" />
+    <list default="true" id="153a9f18-9624-4dd6-8c0a-366d0ed1bd4f" name="Default Changelist" comment="commit 1">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Collection/CommandHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Collection/CommandReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Collection/RouteCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorEx/ErrorCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorEx/IncorrectValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorEx/NoArgument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorEx/NullValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/EyeColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/HairColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Foundation/Route.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Input/FileInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Input/InputInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Input/TextInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Coordinates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Country.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EyeColor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HairColor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,8 +56,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laba" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -74,6 +105,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit 1" />
@@ -83,7 +115,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CollectionManager.java</url>
+          <url>file://$PROJECT_DIR$/src/Collection/CollectionManager.java</url>
           <line>87</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>

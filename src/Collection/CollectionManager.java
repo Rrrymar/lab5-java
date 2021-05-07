@@ -1,3 +1,5 @@
+package Collection;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -644,11 +646,11 @@ public class CollectionManager {
         int italyCounter = 0;
         for (Person person : classPerson) {
             switch (person.getNationality()) {
-                case INDIA:
+                case Country.INDIA:
                     indiaCounter += 1;
-                case VATICAN:
+                case Country.VATICAN:
                     vaticanCounter += 1;
-                case ITALY:
+                case Country.ITALY:
                     italyCounter += 1;
             }
         }

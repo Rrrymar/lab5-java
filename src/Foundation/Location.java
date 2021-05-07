@@ -1,3 +1,5 @@
+package Foundation;
+
 import javax.xml.bind.annotation.*;
 
 
@@ -15,22 +17,26 @@ public class Location {
     @XmlElement
     private Integer z; // =! 0
 
-// Конструктор полей
-    public Location(Long x, Long y, Integer z) {
+    @XmlElement
+    private String name;
+
+    // Конструктор полей
+    public Location(Long x, Long y, Integer z, String name) {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.name = name;
     }
 
-// Конструктор локации
+    // Конструктор локации
     public Location() {}
 
-// Для представления данных локации в строковом виде
+    // Для представления данных локации в строковом виде
     @Override
     public String toString() {
         return "Location{ x=" + x +
                 ", y=" + y +
-                ", z=" + z + "}";
+                ", z=" + z + '}';
     }
     public Long getX() {
         return x;
@@ -41,6 +47,7 @@ public class Location {
     public Integer getZ() {
         return z;
     }
-
+    public String getName(){return name; }
 
 }
+

@@ -1,3 +1,5 @@
+package Foundation;
+
 import javax.xml.bind.annotation.*;
 
 @XmlType(name = "coordinates")
@@ -23,7 +25,7 @@ public class Coordinates {
     @Override
     public String toString() {
         return "Coordinates{ x=" + x
-                + ", y=" + y + "}";
+                + ", y=" + y + '}';
     }
 
     public int getX() {
