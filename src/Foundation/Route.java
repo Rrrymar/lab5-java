@@ -71,5 +71,38 @@ public class Route implements Comparable<Route> {
     public String getName() {
         return name;
     }
+    public void setEyeColor(String eyeColor){
+        if (eyeColor.equals("GREEN")){
+            this.eyeColor = EyeColor.GREEN;
+        }
+        if (eyeColor.equals("RED")){
+            this.eyeColor = EyeColor.RED;
+        }
+        if (eyeColor.equals("YELLOW")){
+            this.eyeColor = EyeColor.YELLOW;
+        }
+    }
+    public void setHairColor(String hairColor){
+        if (hairColor.equals("RED")){
+            this.hairColor = HairColor.RED;
+        }
+        if (hairColor.equals("BLUE")){
+            this.hairColor = HairColor.BLUE;
+        }
+        if (hairColor.equals("GREEN")){
+            this.hairColor = HairColor.GREEN;
+        }
+    }
+    public void setCountry(String country){
+        if (country.equals("INDIA")){
+            this.country = Country.INDIA;
+        }
+        if (country.equals("VATICAN")){
+            this.country = Country.VATICAN;
+        }
+        if (country.equals("ITALY")){
+            this.country = Country.ITALY;
+        }
+    }
 
 }

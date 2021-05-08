@@ -117,7 +117,7 @@ public class CommandHolder {
                 commandmanager.removeGreate();
                 break;
             case "group_counting_by_creation_data":
-                commandmanager.groupCountingByCreationData();
+                commandmanager.GroupCountingByCreationData();
                 break;
             case "filter_countains_name":
                 commandmanager.filterCountainsName();

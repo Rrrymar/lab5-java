@@ -24,7 +24,7 @@ import org.xml.sax.SAXParseException;
 public class Asked {
     public static RouteCollection routeCollection = new RouteCollection();
 
-    public static Country app(File file) throws JAXBException, IOException {
+    public static EyeColor app(File file) throws JAXBException, IOException {
 
         try {
             Route route;
