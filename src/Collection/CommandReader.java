@@ -10,4 +10,4 @@ public class CommandReader {
          return inputcommand.getCurrentinput().toLowerCase().trim().split(" ", 2);
         }
     }
-}
+

@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Класс работающий с вводом с клавиатуры
  */
-public class TextInput implements InputInterface {
+public class TextInput extends InputInterface {
     private String currentInput;
 
     @Override

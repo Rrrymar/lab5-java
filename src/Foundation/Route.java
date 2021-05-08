@@ -1,6 +1,5 @@
 package Foundation;
 
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 public class Route implements Comparable<Route> {
@@ -8,19 +7,32 @@ public class Route implements Comparable<Route> {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Location location; //Поле может быть null
-    private enum EyeColor eyeColor; //Поле не может быть null, Значение поля должно быть больше 1
-    private enum HairColor hairColor;
+    private Location location; //Поле может быть null`
+    private EyeColor eyeColor; //Поле не может быть null, Значение поля должно быть больше 1
+    private HairColor hairColor;
+    private Country country;
+
+    public HairColor getHairColor(){
+        return hairColor;
+    }
+    public EyeColor getEyeColor(){
+        return eyeColor;
+    }
+    public Country getCountry() {
+        return country;
+    }
 
 
-    public Route(long id, String name, Coordinates coordinates, Location location, EyeColor eyeColor, HairColor hairColor) {
+
+    public Route(long id, String name, Coordinates coordinates, Location location, EyeColor eyeColor, HairColor hairColor, Country country) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = ZonedDateTime.now();
         this.location = location;
-        this.eyeColor = Foundation.EyeColor;
-        this.hairColor = Foundation.HairColor;
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
+        this.country = country;
     }
 
     public Long getId() {
@@ -29,16 +41,6 @@ public class Route implements Comparable<Route> {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int compareTo(Route route) {
-        if (this.distance == route.distance) {
-            return 0;
-        } else if (this.distance > route.distance) {
-            return 1;
-        } else {
-            return -1;
-        }
     }
 
     @Override
@@ -58,7 +60,7 @@ public class Route implements Comparable<Route> {
         return coordinates;
     }
 
-    public LocalDate getCreationDate() {
+    public Long getCreationData() {
         return creationDate;
     }
 
@@ -66,15 +68,8 @@ public class Route implements Comparable<Route> {
         return location;
     }
 
-    public Location getTo() {
-        return to;
-    }
-
-    public Long getDistance() {
-        return distance;
-    }
-
     public String getName() {
         return name;
     }
+
 }

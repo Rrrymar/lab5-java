@@ -130,12 +130,6 @@ public class CommandHolder {
             case "remove_head":
                 commandmanager.removeHead();
                 break;
-            case "min_by_distance":
-                commandmanager.minByDistance();
-                break;
-            case "max_by_from":
-                commandmanager.maxByFrom();
-                break;
             case "print_field_ascending_distance":
                 commandmanager.printFieldDescendingLocation();
                 break;
