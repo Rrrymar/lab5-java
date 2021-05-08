@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.soap.Name;
 import java.io.*;
 import java.util.*;
 
@@ -73,7 +74,8 @@ public class CommandManager {
      * @throws IncorrectValue
      * @throws NullValue
      */
-    public EyeColor readElement(InputInterface command) throws IncorrectValue, NullValue {
+
+    public Name readElement(InputInterface command) throws IncorrectValue,NullValue {
         for (int i = 0; i < routeCollection.getCollection().size(); i++) {
             if (id == routeCollection.getCollection().get(i).getId()) {
                 id++;
@@ -87,6 +89,9 @@ public class CommandManager {
 
         } while (name.equals(""));
 
+
+    }
+    public Coordinates readElement(InputInterface command) throws IncorrectValue, NullValue {
         String x1;
         int x = Integer.parseInt(null);
         do {
@@ -118,8 +123,10 @@ public class CommandManager {
                 System.out.println("Это не число");
             }
         } while (y == null);
+        }
 
 
+    public Location readElement(InputInterface command) throws IncorrectValue, NullValue {
         String x2;
         long xl1 = 0;
         do {
@@ -188,6 +195,10 @@ public class CommandManager {
 
         } while (eyeChoose == null);
 
+
+
+        public HairColor readElement(InputInterface command) throws IncorrectValue, NullValue {
+
         String hairColor1;
         String hairChoose = null;
 
@@ -212,24 +223,64 @@ public class CommandManager {
             }
 
         } while (hairChoose == null);
+    }
+
+
+
+    public EyeColor readElement(InputInterface command) throws IncorrectValue,NullValue {
+
+        String eyeColor1;
+        String eyeChoose = null;
+        do {
+            try {
+                command.output(("Выберите вариант цвета глаз YELLOW, RED, GREEN, впишите нужное: "));
+                eyeColor1 = command.getNextInput().trim();
+                switch (eyeColor1) {
+                    case "YELLOW":
+                        return EyeColor.YELLOW;
+                    case "RED":
+                        return EyeColor.RED;
+                    case "GREEN":
+                        return EyeColor.GREEN;
+                    default:
+                        break;
+
+                }
+                eyeChoose = eyeColor1;
+            } catch (NumberFormatException n) {
+                System.out.println("Это не представленное значение");
+            }
+
+        } while (eyeChoose == null);
+    }
+
+    public Country readElement(InputInterface command) throws IncorrectValue,NullValue {
 
         String country1;
         String countryChoose = null;
-        do {
-            command.output(("Выберите вариант страны INDIA, VATICAN, ITALY, впишите нужное: "));
-            country1 = command.getNextInput().trim();
-            if (country1.equals("INDIA") || country1.equals("VATICAN") || country1.equals("ITALY")) {
-                countryChoose = country1;
-            } else {
+            do {
                 try {
-                    hairChoose = (hairColor1);
+                    command.output(("Выберите вариант цвета волос BLUE, RED, GREEN, впишите нужное: "));
+                    country1 = command.getNextInput().trim();
+                    switch (country1) {
+                        case "BLUE":
+                            return Country.INDIA;
+                        case "RED":
+                            return Country.VATICAN;
+                        case "GREEN":
+                            return Country.ITALY;
+                        default:
+                            break;
+                    }
+                    countryChoose = country1;
                 } catch (NumberFormatException n) {
-                    System.out.println("Это не та страна");
+                    System.out.println("Это не тот цвет");
 
                 }
-            }
         } while (countryChoose == null);
+    }
 
+    public Country readElement(InputInterface command) throws IncorrectValue,NullValue {
         String high;
         Long high1 = null;
         do {
@@ -245,7 +296,7 @@ public class CommandManager {
                 System.out.println("Это не число");
             }
         } while (high1 == null);
-        Route route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1, zl1), new EyeColor(eyeChoose), new HairColor(hairChoose), new Country(countryChoose));
+        Route route = new Route(id, new Name(name), new Coordinates(x, y), new Location(xl1, yl1, zl1), new EyeColor(eyeChoose), new HairColor(hairChoose), new Country(countryChoose));
         return route;
     }
 
