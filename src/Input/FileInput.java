@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileInput extends InputInterface {
+public class FileInput implements InputInterface {
     public FileInput(String fileName) throws FileNotFoundException {
 
         String file = fileName;

@@ -116,12 +116,9 @@ public class CommandHolder {
             case "remove_greate":
                 commandmanager.removeGreate(inputCommand);
                 break;
-            case "group_counting_by_creation_data":
-                commandmanager.GroupCountingByCreationData();
-                break;
-            case "print_field_descending_location":
-                commandmanager.printFieldDescendingLocation();
-                break;
+//            case "print_field_descending_location":
+//                commandmanager.printFieldDescendingLocation();
+//                break;
             case "remove_head":
                 commandmanager.removeHead();
                 break;

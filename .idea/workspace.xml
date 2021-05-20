@@ -10,14 +10,15 @@
       <change beforePath="$PROJECT_DIR$/src/Collection/CommandHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Collection/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Collection/CommandReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Chooser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collection/RESERV.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Foundation/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Foundation/EyeColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/EyeColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Foundation/HairColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/HairColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Name.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Foundation/Personchik.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Foundation/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input/FileInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/FileInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input/InputInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/InputInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input/TextInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/TextInput.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,11 +105,6 @@
           <url>file://$PROJECT_DIR$/src/Collection/CollectionManager.java</url>
           <line>87</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Collection/CommandManager.java</url>
-          <line>599</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
