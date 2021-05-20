@@ -21,37 +21,27 @@ public class Main {
 
         try {
             file = new File("ww");
-        } catch (NullPointerException e) {
-            System.out.println("Создайте переменную окружения(hleb=\"/home/s309622/ww\"\n" +
-                    "export hleb)");
-        }
-        try {
             if (!file.exists()) throw new FileNotFoundException();
-        } catch (FileNotFoundException e) {
-            System.out.println("Файла по указанному пути не существует");
-            if (false) System.exit(1);
-        } catch (NullPointerException e) {
-        }
-        try {
             if (!file.canRead() || !file.canWrite()) throw new SecurityException();
-        } catch (SecurityException se) {
-            System.out.println("Файл защищен от чтения и/или записи. Для программы нужны оба разрешения");
-            if (false) System.exit(1);
-        } catch (NullPointerException e) {
-        }
-        try {
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 public void run() {
                     System.out.println("\nВыход...");
                 }
             });
             asked.app(file);
-        } catch (NoSuchElementException e) {
         } catch (NullPointerException e) {
-            System.out.println("Ошибка в файле, введите все данные");
+            System.out.println("Создайте переменную окружения(hleb=\"/home/s309622/LABA5/out/artifacts/LABA5_jar/ww\"\n" +
+                    "export hleb) или ошибка в файле, введите все данные");
             e.printStackTrace();
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден");
+            System.out.println("Файла по указанному пути не существует");
+            if (false) System.exit(1);
+        } catch (SecurityException se) {
+            System.out.println("Файл защищен от чтения и/или записи. Для программы нужны оба разрешения");
+            if (false) System.exit(1);
+
+
+
         }
     }
 }

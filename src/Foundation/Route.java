@@ -52,6 +52,7 @@ public class Route implements Comparable<Route> {
                 ", name=" + name +
                 ", coordinates" + coordinates +
                 ", location" + location +
+                ", high" + high +
                 ", eyeColor" + eyeColor +
                 ", hairColor" + hairColor +
                 ", country" + country + '\'' +

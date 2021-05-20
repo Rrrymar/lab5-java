@@ -31,7 +31,7 @@ public class Asked {
             Long id;
             String name;
             int x;
-            long heigh = 0;
+            long high = 0;
             Integer y = 0;
             long x1 = 0;
             long y1 = 0;
@@ -77,12 +77,12 @@ public class Asked {
                             System.exit(1);
                         } else {
                             name = eElement.getElementsByTagName("name").item(0).getTextContent();
-                            if (eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent().equals("") || Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent()) < -801) {
+                            if (eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent().equals("") || Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent()) < -800) {
                                 System.out.println("Coordinates : x - Значение поля должно быть => -800, Поле не может быть null");
                                 System.exit(1);
                             } else {
                                 x = Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent());
-                                if (Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent()) < 991) {
+                                if (Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent()) > 990) {
                                     System.out.println("Значение поля должно быть =< 990");
                                     System.exit(1);
                                 } else {
@@ -92,70 +92,63 @@ public class Asked {
                                     } else {
                                         x1 = Long.parseLong(eElement.getElementsByTagName("location").item(0).getFirstChild().getTextContent());
                                     }
-                                }
-                                if (eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent().equals("")) {
-                                    y1 = Long.valueOf(null);
-                                } else {
-                                    y1 = Long.parseLong(eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent());
-                                }
-                                if (eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent().equals("")) {
-                                    z1 = 0;
-                                } else {
-                                    z1 = Integer.parseInt(eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent());
-                                }
 
-                                if (eElement.getElementsByTagName("Location").item(0).getTextContent().equals("")) {
-                                    System.out.println("Поле не может быть null");
-                                    System.exit(1);
-                                }
-                                if (eElement.getElementsByTagName("Heigh").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent().equals("")) {
-                                    System.out.println("Поле не может быть null");
-                                    System.exit(1);
-                                } else {
-                                    heigh = Long.parseLong(eElement.getElementsByTagName("distance").item(0).getTextContent());
-                                }
-                                if (eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
-                                    eyeColor1 = String.valueOf(eElement.getElementsByTagName("eyeColor").item(0).getLastChild().getTextContent());
-                                    switch (eyeColor1) {
-                                        case "GREEN":
-                                            eyeColor = EyeColor.GREEN;
-                                        case "RED":
-                                            eyeColor = EyeColor.RED;
-                                        case "YELLOW":
-                                            eyeColor = EyeColor.YELLOW;
-                                        default:
-                                            break;
+                                    if (eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent().equals("")) {
+                                        y1 = Long.valueOf(null);
+                                    } else {
+                                        y1 = Long.parseLong(eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent());
                                     }
-                                }
-                                if (eElement.getElementsByTagName("hairColor").item(0).getFirstChild().getTextContent().equals("")) {
-                                    hairColor1 = String.valueOf(eElement.getElementsByTagName("hairColor").item(0).getLastChild().getTextContent());
-                                    switch (hairColor1) {
-                                        case "BLUE":
-                                            hairColor = HairColor.BLUE;
-                                        case "RED":
-                                            hairColor = HairColor.RED;
-                                        case "GREEN":
-                                            hairColor = HairColor.GREEN;
-                                        default:
-                                            break;
+                                    if (eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent().equals("")) {
+                                        z1 = 0;
+                                    } else {
+                                        z1 = Integer.parseInt(eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent());
+                                        }
+
                                     }
-                                }
-                                if (eElement.getElementsByTagName("country").item(0).getFirstChild().getTextContent().equals("")) {
-                                    country1 = String.valueOf(eElement.getElementsByTagName("country").item(0).getLastChild().getTextContent());
-                                    switch (country1) {
-                                        case "INDIA":
-                                            country = Country.INDIA;
-                                        case "VATICAN":
-                                            country = Country.VATICAN;
-                                        case "ITALY":
-                                            country = Country.ITALY;
-                                        default:
-                                            break;
+                                    if (eElement.getElementsByTagName("High").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent().equals("")) {
+                                        System.out.println("Поле не может быть null");
+                                        System.exit(1);
+                                    } else {
+                                        high = Long.parseLong(eElement.getElementsByTagName("distance").item(0).getTextContent());
                                     }
-                                } else {
-                                    heigh = Long.parseLong(eElement.getElementsByTagName("location").item(0).getTextContent());
-                                    route = new Route(id, name, new Coordinates(x, y), new Location(x1, y1, z1), heigh, eyeColor, hairColor, country);
-                                    routeCollection.getCollection().add(route);
+                                    if (eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                        eyeColor1 = String.valueOf(eElement.getElementsByTagName("eyeColor").item(0).getLastChild().getTextContent());
+                                        switch (eyeColor1) {
+                                            case "GREEN":
+                                                eyeColor = EyeColor.GREEN;
+                                            case "RED":
+                                                eyeColor = EyeColor.RED;
+                                            case "YELLOW":
+                                                eyeColor = EyeColor.YELLOW;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    if (eElement.getElementsByTagName("hairColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                        hairColor1 = String.valueOf(eElement.getElementsByTagName("hairColor").item(0).getLastChild().getTextContent());
+                                        switch (hairColor1) {
+                                            case "BLUE":
+                                                hairColor = HairColor.BLUE;
+                                            case "RED":
+                                                hairColor = HairColor.RED;
+                                            case "GREEN":
+                                                hairColor = HairColor.GREEN;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    if (eElement.getElementsByTagName("country").item(0).getFirstChild().getTextContent().equals("")) {
+                                        country1 = String.valueOf(eElement.getElementsByTagName("country").item(0).getLastChild().getTextContent());
+                                        switch (country1) {
+                                            case "INDIA":
+                                                country = Country.INDIA;
+                                            case "VATICAN":
+                                                country = Country.VATICAN;
+                                            case "ITALY":
+                                                country = Country.ITALY;
+                                            default:
+                                                break;
+                                    }
                                 }
                             }
                         }
@@ -163,17 +156,17 @@ public class Asked {
                     else{
                         System.out.println("\nЭлемент с таким ID(" + id + ") уже существует введите другой");
                     }
-                } if (temp == nList.getLength() - 1) {
-                    routeCollection.setDate(new Date());
-                    if (routeCollection.getCollection().size() != 0) {
-                        System.out.println("\nЭлементы добавлены в коллекцию");
-                        System.out.println("----------------------------");
-                    }
-                    CommandHolder handler = new CommandHolder(routeCollection);
-                    TextInput terminal = new TextInput();
-                    terminal.output("Здравствуйте, вы находитесь в интерактивном режиме! Введите help для просмотра возможных команд");
-                    while (!terminal.getNextInput().equals("exit")) {
-                        handler.doCommand(terminal);
+                    } if (temp == nList.getLength() - 1) {
+                        routeCollection.setDate(new Date());
+                        if (routeCollection.getCollection().size() != 0) {
+                            System.out.println("\nЭлементы добавлены в коллекцию");
+                            System.out.println("----------------------------");
+                        }
+                        CommandHolder handler = new CommandHolder(routeCollection);
+                        TextInput terminal = new TextInput();
+                        terminal.output("Здравствуйте, вы находитесь в интерактивном режиме! Введите help для просмотра возможных команд");
+                        while (!terminal.getNextInput().equals("exit")) {
+                            handler.doCommand(terminal);
                         }
                     }
                 }
