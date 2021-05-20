@@ -114,24 +114,16 @@ public class CommandHolder {
                 commandmanager.addifmin(inputCommand);
                 break;
             case "remove_greate":
-                commandmanager.removeGreate();
+                commandmanager.removeGreate(inputCommand);
                 break;
             case "group_counting_by_creation_data":
                 commandmanager.GroupCountingByCreationData();
                 break;
-            case "filter_countains_name":
-                commandmanager.filterCountainsName();
-                break;
             case "print_field_descending_location":
                 commandmanager.printFieldDescendingLocation();
                 break;
-
-
             case "remove_head":
                 commandmanager.removeHead();
-                break;
-            case "print_field_ascending_distance":
-                commandmanager.printFieldDescendingLocation();
                 break;
             default:
                 System.out.println("Такой команды нет. Введите help");

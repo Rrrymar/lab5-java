@@ -1,21 +1,21 @@
 package Foundation;
 
 public class Location {
-    private int x;
-    private int y;
+    private long x;
+    private long y;
     private Integer z;
 
-    public Location(Long x, Long y, Integer z) {
+    public Location(long x, long y, Integer z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public int getY() {
+    public long getY() {
         return y;
     }
 
-    public int getX() {
+    public long getX() {
         return x;
     }
 

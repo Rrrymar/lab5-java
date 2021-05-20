@@ -8,9 +8,11 @@ import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.soap.Name;
 import java.io.*;
+import java.time.ZonedDateTime;
 import java.util.*;
+
+import static Foundation.EyeColor.valueOf;
 
 /**
  * Класс в котором описаны комманды
@@ -74,8 +76,15 @@ public class CommandManager {
      * @throws IncorrectValue
      * @throws NullValue
      */
-
-    public Name readElement(InputInterface command) throws IncorrectValue,NullValue {
+    /**
+     * Метод считывает элемент и заносит параметры, создавая тем самым объект
+     *
+     * @param command
+     * @return
+     * @throws IncorrectValue
+     * @throws NullValue
+     */
+    public Route readElement(InputInterface command) throws IncorrectValue, NullValue {
         for (int i = 0; i < routeCollection.getCollection().size(); i++) {
             if (id == routeCollection.getCollection().get(i).getId()) {
                 id++;
@@ -89,9 +98,6 @@ public class CommandManager {
 
         } while (name.equals(""));
 
-
-    }
-    public Coordinates readElement(InputInterface command) throws IncorrectValue, NullValue {
         String x1;
         int x = Integer.parseInt(null);
         do {
@@ -123,10 +129,8 @@ public class CommandManager {
                 System.out.println("Это не число");
             }
         } while (y == null);
-        }
 
 
-    public Location readElement(InputInterface command) throws IncorrectValue, NullValue {
         String x2;
         long xl1 = 0;
         do {
@@ -171,7 +175,28 @@ public class CommandManager {
             }
         } while (zl1 == null);
 
-        String eyeColor1;
+        String high;
+        Long high1 = null;
+        do {
+            command.output("Введите расстояние ");
+            high = command.getNextInput().trim();
+            try {
+                high1 = Long.parseLong(high);
+                if (high1 <= 1) {
+                    high1 = null;
+                    System.out.println("Поле должно быть больше 1");
+                }
+            } catch (NumberFormatException n) {
+                System.out.println("Это не число");
+            }
+        } while (high1 == null);
+        Route route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1, zl1));
+        return route;
+    }
+
+    public EyeColor reciveEyeColor(InputInterface command) throws IncorrectValue, NullValue {
+        EyeColor eyeColor;
+        String eyeColor1 = "";
         String eyeChoose = null;
         do {
             try {
@@ -186,19 +211,17 @@ public class CommandManager {
                         return EyeColor.GREEN;
                     default:
                         break;
-
                 }
                 eyeChoose = eyeColor1;
-            }catch (NumberFormatException n) {
+            } catch (NumberFormatException n) {
                 System.out.println("Это не представленное значение");
             }
 
         } while (eyeChoose == null);
+        return EyeColor.FAKE;
+    }
 
-
-
-        public HairColor readElement(InputInterface command) throws IncorrectValue, NullValue {
-
+    public HairColor reciveHairColor(InputInterface command) throws IncorrectValue, NullValue {
         String hairColor1;
         String hairChoose = null;
 
@@ -219,43 +242,13 @@ public class CommandManager {
                 hairChoose = hairColor1;
             } catch (NumberFormatException n) {
                 System.out.println("Это не тот цвет");
-
             }
-
         } while (hairChoose == null);
+        return HairColor.FAKE;
     }
 
 
-
-    public EyeColor readElement(InputInterface command) throws IncorrectValue,NullValue {
-
-        String eyeColor1;
-        String eyeChoose = null;
-        do {
-            try {
-                command.output(("Выберите вариант цвета глаз YELLOW, RED, GREEN, впишите нужное: "));
-                eyeColor1 = command.getNextInput().trim();
-                switch (eyeColor1) {
-                    case "YELLOW":
-                        return EyeColor.YELLOW;
-                    case "RED":
-                        return EyeColor.RED;
-                    case "GREEN":
-                        return EyeColor.GREEN;
-                    default:
-                        break;
-
-                }
-                eyeChoose = eyeColor1;
-            } catch (NumberFormatException n) {
-                System.out.println("Это не представленное значение");
-            }
-
-        } while (eyeChoose == null);
-    }
-
-    public Country readElement(InputInterface command) throws IncorrectValue,NullValue {
-
+    public Country reviveCountry(InputInterface command) throws IncorrectValue,NullValue {
         String country1;
         String countryChoose = null;
             do {
@@ -278,27 +271,9 @@ public class CommandManager {
 
                 }
         } while (countryChoose == null);
+            return Country.FAKE;
     }
 
-    public Country readElement(InputInterface command) throws IncorrectValue,NullValue {
-        String high;
-        Long high1 = null;
-        do {
-            command.output("Введите расстояние ");
-            high = command.getNextInput().trim();
-            try {
-                high1 = Long.parseLong(high);
-                if (high1 <= 1) {
-                    high1 = null;
-                    System.out.println("Поле должно быть больше 1");
-                }
-            } catch (NumberFormatException n) {
-                System.out.println("Это не число");
-            }
-        } while (high1 == null);
-        Route route = new Route(id, new Name(name), new Coordinates(x, y), new Location(xl1, yl1, zl1), new EyeColor(eyeChoose), new HairColor(hairChoose), new Country(countryChoose));
-        return route;
-    }
 
     /**
      * Удаляет элемент из коллекции по его id
@@ -513,17 +488,17 @@ public class CommandManager {
     public void GroupCountingByCreationData(){
         int v = 0;
         if (routeCollection.getCollection().size() != 0) {
-            List<Long> collection = new LinkedList<>();
+            List<ZonedDateTime> collection = new LinkedList<>();
             for (int i = routeCollection.getCollection().size(); i < routeCollection.getCollection().size(); i++) {
-                collection.add(routeCollection.getCollection().get(i).getCreationData());
+                collection.add(routeCollection.getCollection().get(i).getCreationDate());
                 if (i == routeCollection.getCollection().size()) {
                     v += 1;
                 }
             }
             Comparator<Long> comparator = Comparator.comparing(obj -> obj.longValue());
-            Collections.sort(collection, comparator);
+            collection.sort(comparator);
 
-            for (Long d : collection) {
+            for (ZonedDateTime d : collection) {
                 System.out.print(d.toString() + " " + v);
             }
         } else {
@@ -589,12 +564,12 @@ public class CommandManager {
                                         i = -1;
                                     }
                                 }
-                                String[] arr = new String[12];
+                                String[] arr = new String[8];
                                 for (int i = 0; i < arr.length; i++) {
                                     userCommand = commandReader.nextLine().toLowerCase();
                                     arr[i] = userCommand;
                                 }
-                                Route route = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), Integer.parseInt(arr[3])), new Location(Integer.parseInt(arr[4]), Integer.parseInt(arr[5]), Integer.parseInt(arr[6])), new EyeColor(Integer.parseInt(arr[7])), new HairColor(Integer.parseInt(arr[8])), new Country(Integer.parseInt(arr[9]));
+                                Route route = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), EyeColor.valueOf(arr[6]), HairColor.valueOf(arr[7]), Country.valueOf(arr[8]));
                                 routeCollection.getCollection().add(route);
                                 System.out.println("добавлено");
                                 break;
@@ -612,7 +587,7 @@ public class CommandManager {
                                         userCommand = commandReader.nextLine();
                                         arra[i] = userCommand;
                                     }
-                                    Route r = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), new EyeColor(Integer.parseInt(arr[6])), new HairColor(Integer.parseInt(arr[7])), new Country(Integer.parseInt(arr[9])));
+                                    Route r = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), EyeColor.valueOf(arr[6]), HairColor.valueOf(arr[7]), Country.valueOf(arr[8]));
                                     for (int i = 0; i < routeCollection.getCollection().size(); i++) {
                                         if (routeCollection.getCollection().get(i).getId() == id1) {
                                             System.out.println(routeCollection.getCollection().get(i).toString());
@@ -652,19 +627,19 @@ public class CommandManager {
                                     }
                                 }
                                 int count = 0;
-                                String[] arra = new String[12];
+                                String[] arra = new String[8];
                                 for (int i = 0; i < arra.length; i++) {
                                     userCommand = commandReader.nextLine();
                                     arra[i] = userCommand;
                                 }
-                                Route r = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), new EyeColor(Integer.parseInt(arr[6])), new HairColor(Integer.parseInt(arr[7])), new Country(Integer.parseInt(arr[9])));
+                                Route r2 = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), EyeColor.valueOf(arr[6]), HairColor.valueOf(arr[7]), Country.valueOf(arr[8]));
                                 for (int i = 0; i < routeCollection.getCollection().size(); i++) {
-                                    if (routeCollection.getCollection().get(i).compareTo(r) == 1) {
+                                    if (routeCollection.getCollection().get(i).compareTo(r2) == 1) {
                                         count++;
                                     }
                                 }
                                 if (count == routeCollection.getCollection().size()) {
-                                    routeCollection.getCollection().add(r);
+                                    routeCollection.getCollection().add(r2);
                                 }
                                 break;
                             case "remove_greater":

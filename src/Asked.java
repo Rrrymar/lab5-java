@@ -148,12 +148,7 @@ public class Asked {
                                         else{
                                             Location = Long.parseLong(eElement.getElementsByTagName("location").item(0).getTextContent());
                                             route = new Route(id,
-                                                    name,
-                                                    new Coordinates(x, y),
-                                                    new Location(x1, y1, z1),
-                                                    new EyeColor(),
-                                                    new Country,
-                                                    new HairColor());
+                                                    name);
                                             routeCollection.getCollection().add(route);
                                         }
                                     }
