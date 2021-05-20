@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="153a9f18-9624-4dd6-8c0a-366d0ed1bd4f" name="Default Changelist" comment="commit 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Asked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Asked.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collection/CommandHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collection/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collection/CommandReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collection/CommandReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collection/RESERV.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/EyeColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/EyeColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/HairColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/HairColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Personchik.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Foundation/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Foundation/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input/FileInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/FileInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input/InputInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/InputInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input/TextInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input/TextInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAb5.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +35,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laba" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kaba/src/Main.java" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
