@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) throws JAXBException, IOException, SAXParseException {
 
         try {
-            file = new File("ww");
+            String env = System.getenv("srg");
+            file = new File(args[0]);
             if (!file.exists()) throw new FileNotFoundException();
             if (!file.canRead() || !file.canWrite()) throw new SecurityException();
             Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -30,16 +31,17 @@ public class Main {
             });
             asked.app(file);
         } catch (NullPointerException e) {
-            System.out.println("Создайте переменную окружения(hleb=\"/home/s309622/LABA5/out/artifacts/LABA5_jar/ww\"\n" +
-                    "export hleb) или ошибка в файле, введите все данные");
+            System.out.println("Создайте переменную окружения(hleb=\"/home/s309622/LABA5/out/artifacts/LABA5_jar/ww\"\n" );
+            //        "export hleb) или ошибка в файле, введите все данные");
             e.printStackTrace();
         } catch (FileNotFoundException e) {
-            System.out.println("Файла по указанному пути не существует");
-            if (false) System.exit(1);
+            //System.out.println("Файла по указанному пути не существует");
+            //if (false) System.exit(1);
+            e.printStackTrace();
         } catch (SecurityException se) {
-            System.out.println("Файл защищен от чтения и/или записи. Для программы нужны оба разрешения");
-            if (false) System.exit(1);
-
+            //System.out.println("Файл защищен от чтения и/или записи. Для программы нужны оба разрешения");
+            se.printStackTrace();
+            //if (false) System.exit(1);
 
 
         }

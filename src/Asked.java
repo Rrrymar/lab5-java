@@ -44,7 +44,7 @@ public class Asked {
             Country country = null;
 
 
-
+            System.out.println(String.valueOf(file));
             File fXmlFile = new File(String.valueOf(file));
             BufferedInputStream script = new BufferedInputStream(new FileInputStream(fXmlFile));
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -88,13 +88,13 @@ public class Asked {
                                 } else {
                                     y = Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent());
                                     if (eElement.getElementsByTagName("location").item(0).getFirstChild().getTextContent().equals("")) {
-                                        x1 = Long.valueOf(null);
+                                        x1 = 0;
                                     } else {
                                         x1 = Long.parseLong(eElement.getElementsByTagName("location").item(0).getFirstChild().getTextContent());
                                     }
 
                                     if (eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent().equals("")) {
-                                        y1 = Long.valueOf(null);
+                                        y1 = 0;
                                     } else {
                                         y1 = Long.parseLong(eElement.getElementsByTagName("location").item(0).getFirstChild().getNextSibling().getTextContent());
                                     }
@@ -105,11 +105,14 @@ public class Asked {
                                         }
 
                                     }
-                                    if (eElement.getElementsByTagName("High").item(0).getFirstChild().getNextSibling().getNextSibling().getTextContent().equals("")) {
+                                    System.out.println(eElement.getElementsByTagName("id").item(0).getTextContent());
+                                    System.out.println(eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent());
+
+                                    if (eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent().equals("")) {
                                         System.out.println("Поле не может быть null");
                                         System.exit(1);
                                     } else {
-                                        high = Long.parseLong(eElement.getElementsByTagName("distance").item(0).getTextContent());
+                                        high = Long.parseLong(eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent());
                                     }
                                     if (eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
                                         eyeColor1 = String.valueOf(eElement.getElementsByTagName("eyeColor").item(0).getLastChild().getTextContent());
@@ -172,15 +175,20 @@ public class Asked {
                 }
 
         } catch (ParserConfigurationException e) {
-            System.out.println("Ошибка парсинга");
+            //System.out.println("Ошибка парсинга");
+            e.printStackTrace();
         } catch (SAXParseException e) {
-            System.out.println("Отредактируйте документ");
+            //System.out.println("Отредактируйте документ");
+            e.printStackTrace();
         } catch (NullValue nullValue) {
-            System.out.println("Значение равно null");
+            //System.out.println("Значение равно null");
+            nullValue.printStackTrace();
         } catch (IncorrectValue incorrectValue) {
-            System.out.println("Неверное значение");
+            incorrectValue.printStackTrace();
+            //System.out.println("Неверное значение");
         } catch (SAXException e) {
-            System.out.println("Ошибка в XML файле");
+            e.printStackTrace();
+            //System.out.println("Ошибка в XML файле");
         } catch (NumberFormatException e) {
             System.out.println("Я вас умоляю, не вводите строки туда, где должны быть числа");
             e.printStackTrace();

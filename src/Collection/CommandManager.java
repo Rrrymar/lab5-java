@@ -102,7 +102,7 @@ public class CommandManager {
         } while (name.equals(""));
 
         String x1;
-        int x = Integer.parseInt(null);
+        int x = 0;
         do {
             command.output("Coordinates: Введите координаты, x:");
             x1 = command.getNextInput().trim();
@@ -115,9 +115,9 @@ public class CommandManager {
             } catch (NumberFormatException n) {
                 System.out.println("Это не число");
             }
-        } while (x == Integer.parseInt(null));
+        } while (x == 0);
 
-        Integer y = null;
+        Integer y = 0;
         String y1;
         do {
             command.output("Введите координаты y:");
@@ -163,7 +163,7 @@ public class CommandManager {
         } while (xl1 == 0);
 
         String z1;
-        Integer zl1 = null;
+        Integer zl1 = 0;
         do {
             command.output("Введите локацию, z:");
             z1 = command.getNextInput().trim();
@@ -179,7 +179,7 @@ public class CommandManager {
         } while (zl1 == null);
 
         String high;
-        Long high1 = null;
+        Long high1 = 0L;
         do {
             command.output("Введите расстояние ");
             high = command.getNextInput().trim();
@@ -408,7 +408,25 @@ public class CommandManager {
         }
 
     }
-
+ /**
+    * выводит значения поля location в порядке убывания
+     */
+    public void printFieldDescendingLocation() {
+        if (routeCollection.getCollection().size() != 0) {
+           List<Location> collection = new LinkedList<>();
+            for (int i = 0; i < routeCollection.getCollection().size(); i++) {
+                collection.add(routeCollection.getCollection().get(i).getLocation());
+            }
+            Comparator<Location> comparator = Comparator.comparing(obj -> ( obj.getX() + obj.getY() + obj.getZ()));
+            collection.sort(comparator);
+           for (int b = collection.size()-1; b >= 0; b--){
+               System.out.print(collection.get(b) + " ");
+           }
+        } else {
+            System.out.println("Коллекция пуста");
+        }
+    }
+//    public void groupCount
     /**
      * выводит первый элемент коллекции и удаляет его
      */

@@ -6,9 +6,9 @@
         <coordinates><x>6</x><y>2</y></coordinates>
         <location><x>34</x><y>9876</y><z>53</z></location>
         <high>12</high>
-	<eyeColor>RED<eyeColor>
-	<hairColor>BLUE<hairColor>
-	<country>INDIA<country
+	<eyeColor>RED</eyeColor>
+	<hairColor>BLUE</hairColor>
+	<country>INDIA</country>
     </route>
     <route>
         <id>45</id>
@@ -16,9 +16,9 @@
         <coordinates><x>234</x><y>76</y></coordinates>
         <location><x></x>546<y>654</y><z>23</z></location>
         <high>22</high>
-	<eyeColor>RED<eyeColor>
-	<hairColor>BLUE<hairColor>
-	<country>INDIA<country
+	<eyeColor>RED</eyeColor>
+	<hairColor>BLUE</hairColor>
+	<country>INDIA</country>
     </route>
     <route>
         <id>124</id>
@@ -26,9 +26,9 @@
         <coordinates><x>67</x><y>66</y></coordinates>
         <location><x></x>24<y>98</y><z>11</z></location>
         <high>65</high>
-	<eyeColor>RED<eyeColor>
-	<hairColor>BLUE<hairColor>
-	<country>INDIA<country
+	<eyeColor>RED</eyeColor>
+	<hairColor>BLUE</hairColor>
+	<country>INDIA</country>
     </route>
 
 </routecollection>
