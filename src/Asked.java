@@ -29,8 +29,8 @@ public class Asked {
         try {
             Route route;
             Long id;
-            String name;
-            int x;
+            String name = null;
+            int x = 0;
             long high = 0;
             Integer y = 0;
             long x1 = 0;
@@ -82,6 +82,7 @@ public class Asked {
                                 System.exit(1);
                             } else {
                                 x = Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent());
+                                System.out.println(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent());
                                 if (Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent()) > 990) {
                                     System.out.println("Значение поля должно быть =< 990");
                                     System.exit(1);
@@ -114,48 +115,63 @@ public class Asked {
                                     } else {
                                         high = Long.parseLong(eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent());
                                     }
-                                    if (eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
                                         eyeColor1 = String.valueOf(eElement.getElementsByTagName("eyeColor").item(0).getLastChild().getTextContent());
+                                        System.out.println(eyeColor1);
                                         switch (eyeColor1) {
                                             case "GREEN":
                                                 eyeColor = EyeColor.GREEN;
+                                                break;
                                             case "RED":
                                                 eyeColor = EyeColor.RED;
+                                                break;
                                             case "YELLOW":
                                                 eyeColor = EyeColor.YELLOW;
+                                                break;
                                             default:
                                                 break;
                                         }
                                     }
-                                    if (eElement.getElementsByTagName("hairColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("hairColor").item(0).getFirstChild().getTextContent().equals("")) {
                                         hairColor1 = String.valueOf(eElement.getElementsByTagName("hairColor").item(0).getLastChild().getTextContent());
+                                        System.out.println(hairColor1);
                                         switch (hairColor1) {
                                             case "BLUE":
                                                 hairColor = HairColor.BLUE;
+                                                break;
                                             case "RED":
                                                 hairColor = HairColor.RED;
+                                                break;
                                             case "GREEN":
                                                 hairColor = HairColor.GREEN;
+                                                break;
                                             default:
                                                 break;
                                         }
                                     }
-                                    if (eElement.getElementsByTagName("country").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("country").item(0).getFirstChild().getTextContent().equals("")) {
                                         country1 = String.valueOf(eElement.getElementsByTagName("country").item(0).getLastChild().getTextContent());
+                                        System.out.println(country1);
                                         switch (country1) {
                                             case "INDIA":
                                                 country = Country.INDIA;
+                                                break;
                                             case "VATICAN":
                                                 country = Country.VATICAN;
+                                                break;
                                             case "ITALY":
                                                 country = Country.ITALY;
+                                                break;
                                             default:
                                                 break;
                                     }
                                 }
                             }
                         }
+                        route = new Route(id,name, new Coordinates(x, y), new Location(x1, y1, z1), high, eyeColor, hairColor, country);
+                        routeCollection.getCollection().add(route);
                     }
+
                     else{
                         System.out.println("\nЭлемент с таким ID(" + id + ") уже существует введите другой");
                     }

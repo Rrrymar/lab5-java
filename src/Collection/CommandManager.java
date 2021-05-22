@@ -13,7 +13,6 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 
-
 /**
  * Класс в котором описаны комманды
  */
@@ -102,7 +101,7 @@ public class CommandManager {
         } while (name.equals(""));
 
         String x1;
-        int x = 0;
+        Integer x = null;
         do {
             command.output("Coordinates: Введите координаты, x:");
             x1 = command.getNextInput().trim();
@@ -115,9 +114,9 @@ public class CommandManager {
             } catch (NumberFormatException n) {
                 System.out.println("Это не число");
             }
-        } while (x == 0);
+        } while (x == null);
 
-        Integer y = 0;
+        Integer y = null;
         String y1;
         do {
             command.output("Введите координаты y:");
@@ -135,7 +134,7 @@ public class CommandManager {
 
 
         String x2;
-        long xl1 = 0;
+        Long xl1 = null;
         do {
             command.output("Location: Введите локацию, x:");
             x2 = command.getNextInput().trim();
@@ -145,10 +144,10 @@ public class CommandManager {
                 System.out.println("Это не число");
 
             }
-        } while (xl1 == 0);
+        } while (xl1 == null);
 
         String y2;
-        long yl1 = 0;
+        Long yl1 = null;
         do {
             command.output("Введите локацию, y:");
             y2 = command.getNextInput().trim();
@@ -160,16 +159,14 @@ public class CommandManager {
                 System.out.println("Это не число");
             }
 
-        } while (xl1 == 0);
+        } while (yl1 == null);
 
         String z1;
-        Integer zl1 = 0;
+        Integer zl1 = null;
         do {
             command.output("Введите локацию, z:");
             z1 = command.getNextInput().trim();
-            if (z1 == "") {
-                zl1 = null;
-            } else {
+            if (!z1.equals("")) {
                 try {
                     zl1 = Integer.parseInt(z1);
                 } catch (NumberFormatException n) {
@@ -179,7 +176,7 @@ public class CommandManager {
         } while (zl1 == null);
 
         String high;
-        Long high1 = 0L;
+        Long high1 = null;
         do {
             command.output("Введите расстояние ");
             high = command.getNextInput().trim();
@@ -243,27 +240,27 @@ public class CommandManager {
 
         String country1;
         String countryChoose = null;
-            do {
-                try {
-                    command.output(("Выберите вариант цвета волос BLUE, RED, GREEN, впишите нужное: "));
-                    country1 = command.getNextInput().trim();
-                    switch (country1) {
-                        case "BLUE":
-                            country = Country.INDIA;
-                        case "RED":
-                            country = Country.VATICAN;
-                        case "GREEN":
-                            country = Country.ITALY;
-                        default:
-                            break;
-                    }
-                    countryChoose = country1;
-                } catch (NumberFormatException n) {
-                    System.out.println("Это не тот цвет");
-
+        do {
+            try {
+                command.output(("Выберите вариант цвета волос BLUE, RED, GREEN, впишите нужное: "));
+                country1 = command.getNextInput().trim();
+                switch (country1) {
+                    case "BLUE":
+                        country = Country.INDIA;
+                    case "RED":
+                        country = Country.VATICAN;
+                    case "GREEN":
+                        country = Country.ITALY;
+                    default:
+                        break;
                 }
+                countryChoose = country1;
+            } catch (NumberFormatException n) {
+                System.out.println("Это не тот цвет");
+
+            }
         } while (countryChoose == null);
-        route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1,zl1), high1, eyeColor, hairColor, country);
+        route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1, zl1), high1, eyeColor, hairColor, country);
         return route;
     }
 
@@ -408,25 +405,27 @@ public class CommandManager {
         }
 
     }
- /**
-    * выводит значения поля location в порядке убывания
+
+    /**
+     * выводит значения поля location в порядке убывания
      */
     public void printFieldDescendingLocation() {
         if (routeCollection.getCollection().size() != 0) {
-           List<Location> collection = new LinkedList<>();
+            List<Location> collection = new LinkedList<>();
             for (int i = 0; i < routeCollection.getCollection().size(); i++) {
                 collection.add(routeCollection.getCollection().get(i).getLocation());
             }
-            Comparator<Location> comparator = Comparator.comparing(obj -> ( obj.getX() + obj.getY() + obj.getZ()));
+            Comparator<Location> comparator = Comparator.comparing(obj -> (obj.getX() + obj.getY() + obj.getZ()));
             collection.sort(comparator);
-           for (int b = collection.size()-1; b >= 0; b--){
-               System.out.print(collection.get(b) + " ");
-           }
+            for (int b = collection.size() - 1; b >= 0; b--) {
+                System.out.print(collection.get(b) + " ");
+            }
         } else {
             System.out.println("Коллекция пуста");
         }
     }
 //    public void groupCount
+
     /**
      * выводит первый элемент коллекции и удаляет его
      */
@@ -465,6 +464,7 @@ public class CommandManager {
             routeCollection.getCollection().add(z);
         }
     }
+
     /**
      * добавляет новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
      *
@@ -493,7 +493,6 @@ public class CommandManager {
     }
 
 
-
 //    /**
 //     * выводит значения поля location в порядке убывания
 //     */
@@ -518,6 +517,7 @@ public class CommandManager {
 
     /**
      * Считывает и исполняет скрипт из указанного файла
+     *
      * @param fileName
      * @throws IOException
      * @throws JAXBException
