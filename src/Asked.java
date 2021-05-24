@@ -88,6 +88,7 @@ public class Asked {
                                     System.exit(1);
                                 } else {
                                     y = Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent());
+                                    System.out.println(y);
                                     if (eElement.getElementsByTagName("location").item(0).getFirstChild().getTextContent().equals("")) {
                                         x1 = 0;
                                     } else {
