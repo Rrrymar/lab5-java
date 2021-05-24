@@ -82,7 +82,7 @@ public class Asked {
                                 System.exit(1);
                             } else {
                                 x = Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getFirstChild().getTextContent());
-                                System.out.println(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent());
+                                System.out.println(x);
                                 if (Integer.parseInt(eElement.getElementsByTagName("coordinates").item(0).getLastChild().getTextContent()) > 990) {
                                     System.out.println("Значение поля должно быть =< 990");
                                     System.exit(1);
@@ -171,6 +171,7 @@ public class Asked {
                         }
                         route = new Route(id,name, new Coordinates(x, y), new Location(x1, y1, z1), high, eyeColor, hairColor, country);
                         routeCollection.getCollection().add(route);
+                        System.out.println(route);
                     }
 
                     else{
@@ -186,7 +187,7 @@ public class Asked {
                         TextInput terminal = new TextInput();
                         terminal.output("Здравствуйте, вы находитесь в интерактивном режиме! Введите help для просмотра возможных команд");
                         while (!terminal.getNextInput().equals("exit")) {
-                            handler.doCommand(terminal);
+                            handler.doCommand(terminal,file.getAbsolutePath());
                         }
                     }
                 }

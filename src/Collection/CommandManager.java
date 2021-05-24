@@ -195,23 +195,28 @@ public class CommandManager {
         String eyeColor1 = "";
         String eyeChoose = null;
         do {
-            try {
-                command.output(("Выберите вариант цвета глаз YELLOW, RED, GREEN, впишите нужное: "));
+
+                command.output(("Выберите вариант цвета глаз ITALY, VATICAN, INDIA, впишите нужное: "));
                 eyeColor1 = command.getNextInput().trim();
                 switch (eyeColor1) {
                     case "YELLOW":
                         eyeColor = EyeColor.YELLOW;
+                        eyeChoose = eyeColor1;
+                        break;
                     case "RED":
                         eyeColor = EyeColor.RED;
+                        eyeChoose = eyeColor1;
+                        break;
                     case "GREEN":
                         eyeColor = EyeColor.GREEN;
+                        eyeChoose = eyeColor1;
+                        break;
                     default:
+                        System.out.println("Это не представленное значение");
                         break;
                 }
-                eyeChoose = eyeColor1;
-            } catch (NumberFormatException n) {
-                System.out.println("Это не представленное значение");
-            }
+
+
 
         } while (eyeChoose == null);
 
@@ -219,46 +224,53 @@ public class CommandManager {
         String hairChoose = null;
 
         do {
-            try {
+
                 command.output(("Выберите вариант цвета волос BLUE, RED, GREEN, впишите нужное: "));
                 hairColor1 = command.getNextInput().trim();
                 switch (hairColor1) {
                     case "BLUE":
                         hairColor = HairColor.BLUE;
+                        hairChoose = hairColor1;
+                        break;
                     case "RED":
                         hairColor = HairColor.RED;
+                        hairChoose = hairColor1;
+                        break;
                     case "GREEN":
                         hairColor = HairColor.GREEN;
+                        hairChoose = hairColor1;
+                        break;
                     default:
+                        System.out.println("Это не тот цвет");
                         break;
                 }
-                hairChoose = hairColor1;
-            } catch (NumberFormatException n) {
-                System.out.println("Это не тот цвет");
-            }
+
         } while (hairChoose == null);
 
         String country1;
         String countryChoose = null;
         do {
-            try {
+
                 command.output(("Выберите вариант цвета волос BLUE, RED, GREEN, впишите нужное: "));
                 country1 = command.getNextInput().trim();
                 switch (country1) {
                     case "BLUE":
                         country = Country.INDIA;
+                        countryChoose = country1;
+                        break;
                     case "RED":
                         country = Country.VATICAN;
+                        countryChoose = country1;
+                        break;
                     case "GREEN":
                         country = Country.ITALY;
+                        countryChoose = country1;
+                        break;
                     default:
+                        System.out.println("Это не та страна");
                         break;
                 }
-                countryChoose = country1;
-            } catch (NumberFormatException n) {
-                System.out.println("Это не тот цвет");
 
-            }
         } while (countryChoose == null);
         route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1, zl1), high1, eyeColor, hairColor, country);
         return route;
@@ -358,8 +370,8 @@ public class CommandManager {
      * @throws ParserConfigurationException
      * @throws SAXException
      */
-    public void save() throws IOException, ParserConfigurationException, SAXException {
-        File outfile = new File(System.getenv("hleb"));
+    public void save(String filename) throws IOException, ParserConfigurationException, SAXException {
+        File outfile = new File(System.getenv(filename));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outfile))) {
             String con = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<routecollection>\n";
             writer.write(con);
@@ -597,7 +609,7 @@ public class CommandManager {
                                 clear();
                                 break;
                             case "save":
-                                save();
+                                save(fileName);
                                 break;
                             case "execute_script":
                                 ik++;

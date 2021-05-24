@@ -46,7 +46,7 @@ public class CommandHolder {
      * @throws IncorrectValue
      * @throws NullValue
      */
-    public void doCommand(InputInterface inputCommand) throws JAXBException, IOException, ParserConfigurationException, SAXException, IncorrectValue, NullValue {
+    public void doCommand(InputInterface inputCommand, String filename) throws JAXBException, IOException, ParserConfigurationException, SAXException, IncorrectValue, NullValue {
         Command = reader.returnCommand(inputCommand);
 
         switch (Command[0]) {
@@ -95,7 +95,7 @@ public class CommandHolder {
                 System.exit(0);
                 break;
             case "save":
-                commandmanager.save();
+                commandmanager.save(filename);
                 break;
             case "execute_script":
                 try {

@@ -7,11 +7,10 @@ public class Coordinates {
 
 
     // Конструктор для Координат поля
-    public Coordinates(Integer x, Integer Y) {
+    public Coordinates(Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
-
 
 
     // Для написания координат в строковом виде
@@ -26,8 +25,14 @@ public class Coordinates {
     public int getX() {
         return x;
     }
+    public void setX(int x) {
+        this.x = x;
+    }
 
     public Integer getY() {
         return y;
+    }
+    public void setY(Integer x) {
+        this.y = y;
     }
 }
