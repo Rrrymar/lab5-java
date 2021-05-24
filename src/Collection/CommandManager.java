@@ -371,7 +371,7 @@ public class CommandManager {
      * @throws SAXException
      */
     public void save(String filename) throws IOException, ParserConfigurationException, SAXException {
-        File outfile = new File(System.getenv(filename));
+        File outfile = new File(filename);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outfile))) {
             String con = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<routecollection>\n";
             writer.write(con);
@@ -381,9 +381,10 @@ public class CommandManager {
                 content = content + "        <name>" + routeCollection.getCollection().get(temp).getName() + "</name>\n";
                 content = content + "        <coordinates><x>" + routeCollection.getCollection().get(temp).getCoordinates().getX() + "</x><y>" + routeCollection.getCollection().get(temp).getCoordinates().getY() + "</y></coordinates>\n";
                 content = content + "        <location><x>" + routeCollection.getCollection().get(temp).getLocation().getX() + "</x><y>" + routeCollection.getCollection().get(temp).getLocation().getY() + "</y><z>" + routeCollection.getCollection().get(temp).getLocation().getZ() + "</z></location>\n";
-                content = content + "        <EyeColor><eyeColor>" + routeCollection.getCollection().get(temp).getEyeColor() + "</eyeColor>\n";
-                content = content + "        <HairColor><hairColor>" + routeCollection.getCollection().get(temp).getHairColor() + "</hairColor>\n";
-                content = content + "        <Country><country>" + routeCollection.getCollection().get(temp).getCountry() + "</country>\n";
+                content = content + "        <eyeColor>" + routeCollection.getCollection().get(temp).getEyeColor() + "</eyeColor>\n";
+                content = content + "        <hairColor>" + routeCollection.getCollection().get(temp).getHairColor() + "</hairColor>\n";
+                content = content + "        <country>" + routeCollection.getCollection().get(temp).getCountry() + "</country>\n";
+                content = content + "</route>\n";
                 writer.write(content);
             }
 
