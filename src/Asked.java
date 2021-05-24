@@ -108,15 +108,15 @@ public class Asked {
 
                                     }
                                     System.out.println(eElement.getElementsByTagName("id").item(0).getTextContent());
-                                    System.out.println(eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent());
+                                    System.out.println(eElement.getElementsByTagName("high").item(0).getTextContent());
 
-                                    if (eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (eElement.getElementsByTagName("high").item(0).getTextContent().equals("")) {
                                         System.out.println("Поле не может быть null");
                                         System.exit(1);
                                     } else {
-                                        high = Long.parseLong(eElement.getElementsByTagName("high").item(0).getFirstChild().getTextContent());
+                                        high = Long.parseLong(eElement.getElementsByTagName("high").item(0).getTextContent());
                                     }
-                                    if (!eElement.getElementsByTagName("eyeColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("eyeColor").item(0).getTextContent().equals("")) {
                                         eyeColor1 = String.valueOf(eElement.getElementsByTagName("eyeColor").item(0).getLastChild().getTextContent());
                                         System.out.println(eyeColor1);
                                         switch (eyeColor1) {
@@ -133,7 +133,7 @@ public class Asked {
                                                 break;
                                         }
                                     }
-                                    if (!eElement.getElementsByTagName("hairColor").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("hairColor").item(0).getTextContent().equals("")) {
                                         hairColor1 = String.valueOf(eElement.getElementsByTagName("hairColor").item(0).getLastChild().getTextContent());
                                         System.out.println(hairColor1);
                                         switch (hairColor1) {
@@ -150,7 +150,7 @@ public class Asked {
                                                 break;
                                         }
                                     }
-                                    if (!eElement.getElementsByTagName("country").item(0).getFirstChild().getTextContent().equals("")) {
+                                    if (!eElement.getElementsByTagName("country").item(0).getTextContent().equals("")) {
                                         country1 = String.valueOf(eElement.getElementsByTagName("country").item(0).getLastChild().getTextContent());
                                         System.out.println(country1);
                                         switch (country1) {
