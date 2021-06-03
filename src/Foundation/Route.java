@@ -15,7 +15,7 @@ public class Route implements Comparable<Route> {
     private Country country;
 
 
-    public Route(long id, String name, Coordinates coordinates, Location location, Long high, EyeColor eyeColor, HairColor hairColor, Country country) {
+    public Route(long id, String name, ZonedDateTime creationDate, Coordinates coordinates, Location location, Long high, EyeColor eyeColor, HairColor hairColor, Country country) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -45,11 +45,13 @@ public class Route implements Comparable<Route> {
     }
 
 
+
     @Override
     public String toString() {
         return "Route{" +
                 "id=" + id +
                 ", name=" + name +
+                ", creationDate" + creationDate +
                 ", coordinates" + coordinates +
                 ", location" + location +
                 ", high" + high +

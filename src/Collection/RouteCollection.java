@@ -2,6 +2,7 @@ package Collection;
 
 import Foundation.Route;
 
+import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -9,7 +10,7 @@ import java.util.*;
  */
 public class RouteCollection {
     public LinkedList<Route> route = new LinkedList<>();
-    private Date date;
+    private ZonedDateTime creatDate;
 
     public LinkedList<Route> getCollection() {
         return route;
@@ -17,12 +18,6 @@ public class RouteCollection {
 
     public Route getFirst() {
         return route.getFirst();
-    }
-
-    public static String removeLast(String s) {
-        return (s == null || s.length() == 0)
-                ? null
-                : (s.substring(0, s.length() - 1));
     }
 
     public Long[] getIds() {
@@ -37,12 +32,12 @@ public class RouteCollection {
     @Override
     public String toString() {
         return "Тип коллекции: " + this.getCollection().getClass() +
-                "\nДата инициализации: " + date +
+                "\nДата инициализации: " + creatDate +
                 "\nКоличество элементов: " + this.getCollection().size();
     }
 
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(ZonedDateTime creatDate) {
+        this.creatDate = creatDate;
     }
 }

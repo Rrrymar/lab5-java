@@ -9,7 +9,7 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.*;
 
 
@@ -44,6 +44,7 @@ public class CommandManager {
                         "\nadd_if_max: добавление нового элемента в коллекцию,  если его значение больше самого большего элемента этой коллекции. Вам следует ввести характеристики для сравнения элементов после ввода команды." +
                         "\nadd_if_min: добавление нового элемента в коллекцию,  если его значение меньше самого маленького элемента этой коллекции. Вам следует ввести характеристики для сравнения элементов после ввода команды." +
                         "\nremove_great: далить элемент превышающий заданный." +
+                        "\ngroup_counting_by_creation_date: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе" +
                         "\nfilter_countains_name: вывести элементы, значение поля name которых содержит заданную подстроку. Имя элемента, которые должны содержать подстроку." +
                         "\nprint_field_descending_location: вывести значения поля location всех элементов в порядке убывания." +
                         "\n");
@@ -87,6 +88,7 @@ public class CommandManager {
         Country country = null;
         EyeColor eyeColor = null;
         HairColor hairColor = null;
+        ZonedDateTime creationDate = ZonedDateTime.now();
         for (int i = 0; i < routeCollection.getCollection().size(); i++) {
             if (id == routeCollection.getCollection().get(i).getId()) {
                 id++;
@@ -99,6 +101,10 @@ public class CommandManager {
             name = command.getNextInput().trim();
 
         } while (name.equals(""));
+
+
+
+
 
         String x1;
         Integer x = null;
@@ -272,7 +278,7 @@ public class CommandManager {
                 }
 
         } while (countryChoose == null);
-        route = new Route(id, name, new Coordinates(x, y), new Location(xl1, yl1, zl1), high1, eyeColor, hairColor, country);
+        route = new Route(id, name, creationDate, new Coordinates(x, y), new Location(xl1, yl1, zl1), high1, eyeColor, hairColor, country);
         return route;
     }
 
@@ -381,6 +387,7 @@ public class CommandManager {
                 content = content + "        <name>" + routeCollection.getCollection().get(temp).getName() + "</name>\n";
                 content = content + "        <coordinates><x>" + routeCollection.getCollection().get(temp).getCoordinates().getX() + "</x><y>" + routeCollection.getCollection().get(temp).getCoordinates().getY() + "</y></coordinates>\n";
                 content = content + "        <location><x>" + routeCollection.getCollection().get(temp).getLocation().getX() + "</x><y>" + routeCollection.getCollection().get(temp).getLocation().getY() + "</y><z>" + routeCollection.getCollection().get(temp).getLocation().getZ() + "</z></location>\n";
+                content = content + "        <high>" + routeCollection.getCollection().get(temp).getHigh() + "</high>\n";
                 content = content + "        <eyeColor>" + routeCollection.getCollection().get(temp).getEyeColor() + "</eyeColor>\n";
                 content = content + "        <hairColor>" + routeCollection.getCollection().get(temp).getHairColor() + "</hairColor>\n";
                 content = content + "        <country>" + routeCollection.getCollection().get(temp).getCountry() + "</country>\n";
@@ -419,24 +426,6 @@ public class CommandManager {
 
     }
 
-    /**
-     * выводит значения поля location в порядке убывания
-     */
-    public void printFieldDescendingLocation() {
-        if (routeCollection.getCollection().size() != 0) {
-            List<Location> collection = new LinkedList<>();
-            for (int i = 0; i < routeCollection.getCollection().size(); i++) {
-                collection.add(routeCollection.getCollection().get(i).getLocation());
-            }
-            Comparator<Location> comparator = Comparator.comparing(obj -> (obj.getX() + obj.getY() + obj.getZ()));
-            collection.sort(comparator);
-            for (int b = collection.size() - 1; b >= 0; b--) {
-                System.out.print(collection.get(b) + " ");
-            }
-        } else {
-            System.out.println("Коллекция пуста");
-        }
-    }
 //    public void groupCount
 
     /**
@@ -506,27 +495,39 @@ public class CommandManager {
     }
 
 
-//    /**
-//     * выводит значения поля location в порядке убывания
-//     */
-//    public void printFieldDescendingLocation() {
-//        class RouteComporator implements Comparator<Route>{
-//            public Long
-//        }
-//        if (routeCollection.getCollection().size() != 0) {
-//           List<Location> collection = new LinkedList<>();
-//            for (int i = routeCollection.getCollection().size(); i > routeCollection.getCollection().size(); i--) {
-//                collection.add(routeCollection.getCollection().get(i).getLocation());
-//            }
-//            Comparator<Long> comparator = Comparator.comparing(obj -> obj.longValue());
-//            collection.sort(comparator);
-//           for (Location d : collection) {
-//6                System.out.print(d.toString() + " ");
-//            }
-//        } else {
-//            System.out.println("Коллекция пуста");
-//        }
-//    }
+    /**
+     * выводит значения поля location в порядке убывания
+     */
+    public void printFieldDescendingLocation() {
+        if (routeCollection.getCollection().size() != 0) {
+            List<Location> collection = new LinkedList<>();
+            for (int i = 0; i < routeCollection.getCollection().size(); i++) {
+                collection.add(routeCollection.getCollection().get(i).getLocation());
+            }
+            Comparator<Location> comparator = Comparator.comparing(obj -> (obj.getX() + obj.getY() + obj.getZ()));
+            collection.sort(comparator);
+            for (int b = collection.size() - 1; b >= 0; b--) {
+                System.out.print(collection.get(b) + " ");
+            }
+        } else {
+            System.out.println("Коллекция пуста");
+        }
+    }
+
+
+    /**
+     * выводит значения поля groupCount в порядке убывания
+     */
+    public void groupCount() {
+        if (routeCollection.getCollection().size() != 0) {
+            for (int ik = 1; ik <= 12; ik++) {
+                System.out.println(routeCollection.getCollection().stream().filter(o -> o.getCreationDate().getMonthValue() == this.ik).count());
+            }
+        } else {
+            System.out.println("Коллекция пуста");
+        }
+    }
+
 
     /**
      * Считывает и исполняет скрипт из указанного файла
@@ -571,7 +572,8 @@ public class CommandManager {
                                     userCommand = commandReader.nextLine().toLowerCase();
                                     arr[i] = userCommand;
                                 }
-                                Route route = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), Long.parseLong(arr[6]), EyeColor.valueOf(arr[7]), HairColor.valueOf(arr[8]), Country.valueOf(arr[9]));
+                                ZonedDateTime creationDate1 = ZonedDateTime.now();
+                                Route route = new Route(id, arr[0], creationDate1, new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), Integer.parseInt(arr[5])), Long.parseLong(arr[6]), EyeColor.valueOf(arr[7]), HairColor.valueOf(arr[8]), Country.valueOf(arr[9]));
                                 routeCollection.getCollection().add(route);
                                 System.out.println("добавлено");
                                 break;
@@ -589,7 +591,8 @@ public class CommandManager {
                                         userCommand = commandReader.nextLine();
                                         arra[i] = userCommand;
                                     }
-                                    Route r = new Route(id1, arra[0], new Coordinates(Integer.parseInt(arra[1]), Integer.parseInt(arra[2])), new Location(Integer.parseInt(arra[3]), Integer.parseInt(arra[4]), Integer.parseInt(arra[5])), Long.parseLong(arra[6]), EyeColor.valueOf(arra[7]), HairColor.valueOf(arra[8]), Country.valueOf(arra[9]));
+                                    ZonedDateTime creationDate = ZonedDateTime.now();
+                                    Route r = new Route(id1, arra[0], creationDate, new Coordinates(Integer.parseInt(arra[1]), Integer.parseInt(arra[2])), new Location(Integer.parseInt(arra[3]), Integer.parseInt(arra[4]), Integer.parseInt(arra[5])), Long.parseLong(arra[6]), EyeColor.valueOf(arra[7]), HairColor.valueOf(arra[8]), Country.valueOf(arra[9]));
                                     for (int i = 0; i < routeCollection.getCollection().size(); i++) {
                                         if (routeCollection.getCollection().get(i).getId() == id1) {
                                             System.out.println(routeCollection.getCollection().get(i).toString());
@@ -634,7 +637,8 @@ public class CommandManager {
                                     userCommand = commandReader.nextLine();
                                     arra[i] = userCommand;
                                 }
-                                Route r2 = new Route(id2, arra[0], new Coordinates(Integer.parseInt(arra[1]), Integer.parseInt(arra[2])), new Location(Long.parseLong(arra[3]), Long.parseLong(arra[4]), Integer.parseInt(arra[5])), Long.parseLong(arra[6]), EyeColor.valueOf(arra[7]), HairColor.valueOf(arra[8]), Country.valueOf(arra[9]));
+                                ZonedDateTime creationDate2 = ZonedDateTime.now();
+                                Route r2 = new Route(id2, arra[0], creationDate2, new Coordinates(Integer.parseInt(arra[1]), Integer.parseInt(arra[2])), new Location(Long.parseLong(arra[3]), Long.parseLong(arra[4]), Integer.parseInt(arra[5])), Long.parseLong(arra[6]), EyeColor.valueOf(arra[7]), HairColor.valueOf(arra[8]), Country.valueOf(arra[9]));
                                 for (int i = 0; i < routeCollection.getCollection().size(); i++) {
                                     if (routeCollection.getCollection().get(i).compareTo(r2) == 1) {
                                         count++;
@@ -657,7 +661,8 @@ public class CommandManager {
                                     userCommand = commandReader.nextLine();
                                     array[i] = userCommand;
                                 }
-                                Route ro = new Route(id3, array[0], new Coordinates(Integer.parseInt(array[1]), Integer.parseInt(array[2])), new Location(Long.parseLong(array[3]), Long.parseLong(array[4]), Integer.parseInt(array[5])), Long.parseLong(array[6]), EyeColor.valueOf(array[7]), HairColor.valueOf(array[8]), Country.valueOf(array[9]));
+                                ZonedDateTime creationDate = ZonedDateTime.now();
+                                Route ro = new Route(id3, array[0], creationDate, new Coordinates(Integer.parseInt(array[1]), Integer.parseInt(array[2])), new Location(Long.parseLong(array[3]), Long.parseLong(array[4]), Integer.parseInt(array[5])), Long.parseLong(array[6]), EyeColor.valueOf(array[7]), HairColor.valueOf(array[8]), Country.valueOf(array[9]));
                                 for (int i = 0; i > routeCollection.getCollection().size(); i--) {
                                     if (routeCollection.getCollection().get(i).compareTo(ro) == +1) {
                                         routeCollection.getCollection().remove(i);

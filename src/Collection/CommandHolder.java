@@ -119,8 +119,8 @@ public class CommandHolder {
             case "print_field_descending_location":
                 commandmanager.printFieldDescendingLocation();
                 break;
-//            case "group_counting_by_creation_date":
-//                commandmanager.groupCount();
+            case "group_counting_by_creation_date":
+                commandmanager.groupCount();
             case "remove_head":
                 commandmanager.removeHead();
                 break;

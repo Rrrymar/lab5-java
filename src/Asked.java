@@ -3,6 +3,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 import Collection.*;
@@ -169,7 +170,8 @@ public class Asked {
                                 }
                             }
                         }
-                        route = new Route(id,name, new Coordinates(x, y), new Location(x1, y1, z1), high, eyeColor, hairColor, country);
+                        ZonedDateTime creationDate = ZonedDateTime.now();
+                        route = new Route(id,name, creationDate, new Coordinates(x, y), new Location(x1, y1, z1), high, eyeColor, hairColor, country);
                         routeCollection.getCollection().add(route);
                         System.out.println(route);
                     }
@@ -178,7 +180,7 @@ public class Asked {
                         System.out.println("\nЭлемент с таким ID(" + id + ") уже существует введите другой");
                     }
                     } if (temp == nList.getLength() - 1) {
-                        routeCollection.setDate(new Date());
+                        routeCollection.setDate(ZonedDateTime.now());
                         if (routeCollection.getCollection().size() != 0) {
                             System.out.println("\nЭлементы добавлены в коллекцию");
                             System.out.println("----------------------------");
@@ -193,23 +195,23 @@ public class Asked {
                 }
 
         } catch (ParserConfigurationException e) {
-            //System.out.println("Ошибка парсинга");
-            e.printStackTrace();
+            System.out.println("Ошибка парсинга");
+            //e.printStackTrace();
         } catch (SAXParseException e) {
-            //System.out.println("Отредактируйте документ");
-            e.printStackTrace();
+            System.out.println("Отредактируйте документ");
+            //e.printStackTrace();
         } catch (NullValue nullValue) {
-            //System.out.println("Значение равно null");
-            nullValue.printStackTrace();
+            System.out.println("Значение равно null");
+            //nullValue.printStackTrace();
         } catch (IncorrectValue incorrectValue) {
-            incorrectValue.printStackTrace();
-            //System.out.println("Неверное значение");
+            //incorrectValue.printStackTrace();
+            System.out.println("Неверное значение");
         } catch (SAXException e) {
-            e.printStackTrace();
-            //System.out.println("Ошибка в XML файле");
+            //e.printStackTrace();
+            System.out.println("Ошибка в XML файле");
         } catch (NumberFormatException e) {
             System.out.println("Я вас умоляю, не вводите строки туда, где должны быть числа");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
